@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -13,8 +13,7 @@ import { Continent, Country, Currency } from "@/lib/types";
 import CountryCard from "./country-card";
 import { useDebouncedCallback } from "use-debounce";
 import Image from "next/image";
-import { Button } from "./ui/button";
-import { ChevronUp } from "lucide-react";
+import ScrollToTopButton from "@/components/scroll-to-top-button";
 
 const CountriesGrid = ({
   countries,
@@ -31,26 +30,6 @@ const CountriesGrid = ({
   const [filteredCountries, setFilteredCountries] =
     useState<Country[]>(countries);
   const headerRef = useRef<HTMLDivElement>(null);
-  const [isSticky, setIsSticky] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([e]) => {
-        setIsSticky(e.intersectionRatio < 1);
-      },
-      { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
-    );
-
-    if (headerRef.current) {
-      observer.observe(headerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const handleFilter = useDebouncedCallback(
     (searchText: string, continent: string, currency: string) => {
@@ -143,16 +122,6 @@ const CountriesGrid = ({
           </Select>
         </div>
       </div>
-      <Button
-        size="icon"
-        onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 px-5 py-5 rounded-full hover:opacity-90 transition-all scale-0 ${
-          isSticky ? "scale-100" : ""
-        }`}
-        aria-label="Volver arriba"
-      >
-        <ChevronUp className="text-background" />
-      </Button>
       {!filteredCountries || filteredCountries.length === 0 ? (
         <div className="w-full aspect-video flex flex-col items-center justify-center">
           <Image
@@ -173,6 +142,7 @@ const CountriesGrid = ({
           ))}
         </div>
       )}
+      <ScrollToTopButton headerRef={headerRef} />
     </>
   );
 };
