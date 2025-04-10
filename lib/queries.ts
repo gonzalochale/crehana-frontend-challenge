@@ -1,8 +1,11 @@
-export const baseUrl = "https://countries.trevorblades.com";
-import { gql, GraphQLClient } from "graphql-request";
-import { Country } from "@/lib/types";
+"use server";
 
-const client = new GraphQLClient(`${baseUrl}/graphql`);
+const baseUrl = process.env.GRAPHQL_URL!;
+
+import { gql, GraphQLClient } from "graphql-request";
+import { Continent, Country } from "@/lib/types";
+
+const client = new GraphQLClient(baseUrl);
 
 export async function getAllCountries() {
   const query = gql`
@@ -25,5 +28,27 @@ export async function getAllCountries() {
 
   const data: { countries: Country[] } = await client.request(query);
 
+  if (!data.countries) {
+    return [];
+  }
+
   return data.countries;
+}
+
+export async function getAllContinents() {
+  const query = gql`
+    query {
+      continents {
+        name
+      }
+    }
+  `;
+
+  const data: { continents: Continent[] } = await client.request(query);
+
+  if (!data.continents) {
+    return [];
+  }
+
+  return data.continents;
 }

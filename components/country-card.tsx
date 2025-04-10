@@ -11,6 +11,11 @@ import Link from "next/link";
 import { Country } from "@/lib/types";
 
 const CountryCard = ({ country }: { country: Country }) => {
+  const countrySlug = country.name
+    .toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+
   return (
     <Card className="shadow-none aspect-video flex flex-col justify-between">
       <CardHeader className="flex flex-row items-center gap-3">
@@ -23,8 +28,8 @@ const CountryCard = ({ country }: { country: Country }) => {
         </div>
       </CardHeader>
       <CardFooter className="justify-end">
-        <Button variant="link" asChild>
-          <Link href={`/${country.name}`}>Ver detalles</Link>
+        <Button variant="default" size="sm" asChild>
+          <Link href={`/${countrySlug}`}>Ver detalles</Link>
         </Button>
       </CardFooter>
     </Card>
