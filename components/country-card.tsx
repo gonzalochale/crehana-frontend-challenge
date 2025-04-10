@@ -56,23 +56,23 @@ const CountryCard = ({ country }: { country: Country }) => {
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-2 items-center gap-4">
-              <span className="font-semibold">Código:</span>
+              <span className="font-semibold">#️⃣ Código:</span>
               <span>{country.code}</span>
             </div>
             <div className="grid grid-cols-2 items-center gap-4">
-              <span className="font-semibold">Continente:</span>
+              <span className="font-semibold">🌐 Continente:</span>
               <span>{country.continent.name}</span>
             </div>
             <div className="grid grid-cols-2 items-center gap-4">
-              <span className="font-semibold">Moneda:</span>
+              <span className="font-semibold">🪙 Moneda:</span>
               <span>{country.currency || "No disponible"}</span>
             </div>
             <div className="grid grid-cols-2 items-center gap-4">
-              <span className="font-semibold">Capital:</span>
+              <span className="font-semibold">🏔️ Capital:</span>
               <span>{country.capital || "No disponible"}</span>
             </div>
             <div className="grid grid-cols-2 items-start gap-4">
-              <span className="font-semibold">Lenguajes:</span>
+              <span className="font-semibold">🗣️ Lenguajes:</span>
               <div className="flex flex-col gap-1">
                 {country &&
                 country.languages &&

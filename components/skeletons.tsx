@@ -29,7 +29,7 @@ const CountryCardSkeleton = () => {
 export const CountriesSkeleton = () => {
   return (
     <section className="w-full">
-      <div className="w-full flex max-sm:flex-wrap items-end sticky top-0 z-50 bg-background py-2 gap-3">
+      <div className="w-full flex max-sm:flex-wrap items-end py-2 gap-3">
         <div className="flex flex-col gap-1 w-full">
           <span className="text-muted-foreground text-sm font-medium">
             Buscar por nombre
@@ -65,7 +65,7 @@ export const CountriesSkeleton = () => {
         </div>
       </div>
       <div className="w-full grid sm:grid-cols-2 gap-3 pt-3">
-        {Array.from({ length: 10 }, (_, index) => (
+        {Array.from({ length: 4 }, (_, index) => (
           <CountryCardSkeleton key={index} />
         ))}
       </div>

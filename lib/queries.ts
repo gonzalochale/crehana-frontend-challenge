@@ -32,6 +32,9 @@ export async function getAllCountries() {
     return [];
   }
 
+  //simulate delay
+  // await new Promise((resolve) => setTimeout(resolve, 10000));
+
   return data.countries;
 }
 
