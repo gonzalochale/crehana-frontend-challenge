@@ -7,18 +7,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { Country } from "@/lib/types";
 
 const CountryCard = ({ country }: { country: Country }) => {
-  const countrySlug = country.name
-    .toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/[^a-z0-9-]/g, "");
-
   return (
-    <Card className="shadow-none aspect-video flex flex-col justify-between">
-      <CardHeader className="flex flex-row items-center gap-3">
+    <Card className="shadow-none aspect-video flex flex-col justify-between hover:ring-2 hover:ring-offset-2 hover:ring-ring/50 transition-all duration-200 ease-in-out hover:cursor-pointer">
+      <CardHeader>
         <span className="text-5xl">{country.emoji}</span>
         <div className="space-y-2">
           <CardTitle className="uppercase">{country.name}</CardTitle>
@@ -29,7 +23,7 @@ const CountryCard = ({ country }: { country: Country }) => {
       </CardHeader>
       <CardFooter className="justify-end">
         <Button variant="default" size="sm" asChild>
-          <Link href={`/${countrySlug}`}>Ver detalles</Link>
+          Ver detalles
         </Button>
       </CardFooter>
     </Card>

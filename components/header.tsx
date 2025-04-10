@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 const Header = () => {
   return (
-    <header className="flex flex-col gap-3 items-start">
+    <header className="flex flex-col gap-3 items-start pb-5">
       <Image
         src="/assets/test-logo.png"
         alt="Test Logo"
