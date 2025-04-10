@@ -34,7 +34,8 @@ export default function RootLayout({
           alt="Mapa mundi"
           width={1024}
           height={1024}
-          className="max-sm:scale-150 absolute z-[-1] isolate inset-0 w-full mask-b-from-50% mask-b-to-90% mask-radial-from-0%"
+          className="absolute z-[-1] isolate inset-0 w-full mask-b-from-50% mask-b-to-90% mask-radial-from-0%"
+          priority
         />
       </body>
     </html>
